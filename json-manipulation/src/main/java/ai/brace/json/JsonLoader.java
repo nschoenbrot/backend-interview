@@ -1,4 +1,4 @@
-package ai.brace;
+package ai.brace.json;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -26,11 +26,7 @@ public class JsonLoader {
     }
 
     public Map<Integer, String> getIdToTextMap(final String fileName) throws IOException {
-        final Stream<String> lines = Files.lines(getPathForResource(fileName));
-        final StringBuilder json = new StringBuilder();
-        lines.forEach(json::append);
-        final JsonElement jsonElement = new JsonParser().parse(json.toString());
-        final JsonObject jsonObject = jsonElement.getAsJsonObject();
+        final JsonObject jsonObject = getJsonObject(fileName);
         final JsonArray textArray = jsonObject.getAsJsonArray("textArray");
 
         final Map<Integer, String> idTextMap = new HashMap<>();
@@ -43,5 +39,13 @@ public class JsonLoader {
         }
 
         return idTextMap;
+    }
+
+    public JsonObject getJsonObject(final String fileName) throws IOException {
+        final Stream<String> lines = Files.lines(getPathForResource(fileName));
+        final StringBuilder json = new StringBuilder();
+        lines.forEach(json::append);
+        final JsonElement jsonElement = new JsonParser().parse(json.toString());
+        return jsonElement.getAsJsonObject();
     }
 }

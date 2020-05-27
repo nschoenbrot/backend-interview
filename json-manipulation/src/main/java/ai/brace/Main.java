@@ -1,5 +1,8 @@
 package ai.brace;
 
+import ai.brace.json.JsonLoader;
+import ai.brace.json.JsonMerger;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +14,7 @@ public class Main {
         final JsonLoader jsonLoader = new JsonLoader();
         final TextDataSorter textDataSorter = new TextDataSorter();
         final Counter counter = new Counter();
+        final JsonMerger jsonMerger = new JsonMerger();
 
         // Task 1
         final Map<Integer, String> a1TextMap = jsonLoader.getIdToTextMap("a1.json");
@@ -31,5 +35,10 @@ public class Main {
         System.out.println("Frequency of words from Task 2");
         final Map<String, Integer> frequency = counter.countCaseInsensitiveWordFrequency(sortedA2Text);
         frequency.entrySet().forEach(System.out::println);
+
+        System.out.println("\nTask 4\n");
+        System.out.println("Merge a1.json and a2.json. Results in output.json");
+        jsonMerger.writeMergedJson(jsonLoader.getJsonObject("a1.json"),
+                jsonLoader.getJsonObject("a2.json"));
     }
 }

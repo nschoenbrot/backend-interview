@@ -5,8 +5,9 @@ import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.Comparator;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class EmployeeProcessor
@@ -25,7 +26,7 @@ public class EmployeeProcessor
 
     public static void main(String[] args)
     {
-        final Map<Employee, Integer> duplicateCount = new HashMap<>();
+        final Map<Employee, Integer> duplicateCount = new TreeMap<>(Comparator.comparing(employee -> employee.firstName));
 
         try (Stream<String> stream = Files.lines(getPathForResource("employees.csv")))
         {

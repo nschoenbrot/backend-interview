@@ -1,5 +1,7 @@
 package ai.brace;
 
+import java.util.Objects;
+
 public class Employee
 {
     public String firstName;
@@ -13,5 +15,21 @@ public class Employee
         middleInitial = _middleInitial;
         lastName = _lastName;
         socialSecurityNumber = _socialSecurityNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return firstName.equals(employee.firstName) &&
+                middleInitial.equals(employee.middleInitial) &&
+                lastName.equals(employee.lastName) &&
+                socialSecurityNumber.equals(employee.socialSecurityNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, middleInitial, lastName, socialSecurityNumber);
     }
 }

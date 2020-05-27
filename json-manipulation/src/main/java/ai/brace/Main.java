@@ -9,6 +9,13 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        /*
+        All the tasks will be run from here.
+          Potential improvements to be made.
+            Add Unit test,
+            Some refactoring (extract string constants, code reuse between modules, extract string constants, looking using a singleton gson object and injecting that)
+         */
+
         System.out.println("Hello, world.");
 
         final JsonLoader jsonLoader = new JsonLoader();

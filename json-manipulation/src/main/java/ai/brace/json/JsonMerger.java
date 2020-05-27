@@ -53,8 +53,8 @@ public class JsonMerger {
     }
 
     private String getIsoFormattedDate() {
-        TimeZone time = TimeZone.getTimeZone("UTC");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
+        final TimeZone time = TimeZone.getTimeZone("UTC");
+        final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'"); // Quoted "Z" to indicate UTC, no timezone offset
         dateFormat.setTimeZone(time);
         return dateFormat.format(new Date());
     }

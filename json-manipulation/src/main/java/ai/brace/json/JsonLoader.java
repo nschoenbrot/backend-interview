@@ -25,6 +25,7 @@ public class JsonLoader {
         }
     }
 
+    // TODO based on map use consider returning the inverse map.
     public Map<Integer, String> getIdToTextMap(final String fileName) throws IOException {
         final JsonObject jsonObject = getJsonObject(fileName);
         final JsonArray textArray = jsonObject.getAsJsonArray("textArray");
